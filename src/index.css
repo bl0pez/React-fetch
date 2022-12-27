@@ -14,3 +14,21 @@ img{
     height: 100%;
     object-fit: cover;
 }
+
+/* Reiniciar estilos de botonos */
+button{
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.page-item{
+    margin: 0 0.5rem;
+    color: black;
+}
+
+.paginacion{
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}

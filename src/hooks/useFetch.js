@@ -9,22 +9,23 @@ const url = import.meta.env.VITE_URL_API
 }
 
 export const useFetch = () => {
-    const [items, setItems] = useState([]);
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [ error, setError] = useState(false);
 
     const fetchData = async () => {
 
-        const response = await fetch(url, options);
-        if(!response.ok) {
+        try {
+            const response = await fetch(url, options);
+            const data = await response.json();
+            setData(data);
+            setLoading(false);
+
+
+        } catch (error) {
             setError(true);
             setLoading(false);
-            return;
         }
-
-        const data = await response.json();
-        setItems(data);
-        setLoading(false);
 
     }
 
@@ -32,5 +33,5 @@ export const useFetch = () => {
         fetchData();
     }, []);
 
-    return { items, loading, error };
+    return { data, loading, error };
 }
