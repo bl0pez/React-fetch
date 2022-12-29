@@ -42,8 +42,10 @@ function App() {
           </select>
         </div>
         <button className='btn btn-outline-primary' disabled={page === 1} onClick={() => handlePageChange(1)}>Primera página</button>
+        <div className='d-flex gap-2'>
         <button className='btn btn-outline-primary' disabled={page === 1} onClick={() => handlePageChange(page - 1)}><i className="fas fa-arrow-left"></i></button>
         <button className='btn btn-outline-primary' disabled={page === totalPages} onClick={() => handlePageChange(page + 1)}> <i className="fas fa-arrow-right"></i></button>
+        </div>
         <button className='btn btn-outline-primary' disabled={page === totalPages} onClick={() => handlePageChange(totalPages)}>Última página</button>
 
 
