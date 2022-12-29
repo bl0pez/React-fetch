@@ -31,7 +31,7 @@ function App() {
 
 
 
-      <div className='d-flex gap-2 justify-content-center my-4'>
+      <div className='d-flex gap-2 justify-content-center my-4 flex-wrap'>
         <div>
           <select class="form-select" value={page} onChange={(e) => handlePageChange(e.target.value)}>
             {Array.from(Array(totalPages), (_, i) => (
