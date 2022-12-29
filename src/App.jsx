@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import { Card } from './components/Card';
-import { Paginacion } from './components/Paginacion';
 import { Spinner } from './components/Spinner';
 import { useFetch } from './hooks/useFetch';
+import { useViewItems } from './hooks/useViewItems';
 
 function App() {
   const { data, loading, error } = useFetch();
+  const { currentPageData, handlePageChange, handlePageSizeChange, page, totalPages } = useViewItems(data);
 
-  
+
   if (loading) {
     return (
       <Spinner />
@@ -21,25 +21,33 @@ function App() {
 
   return (
     <div className="container my-3">
-      {/* <div className="grid-responsive">
+      <div className="grid-responsive">
         {
-          items.slice(firstPage, lastPage).map(item => (
+          currentPageData.map(item => (
             <Card key={item.id} {...item} />
           ))
         }
       </div>
-      <div className='d-flex gap-2 justify-content-center my-4'>
-        <button className="btn btn-primary" onClick={handlePrevPage}>Prev</button>
-        <button className="btn btn-primary" onClick={handleNextPage}>Next</button>
-      </div> */}
 
-      {/* <Paginacion
-        pageCount={pageCount}
-        onPageChange={(page) => setCurrentPage(page)}
-        data={data}
-        currentPage={currentPage}
-        pageRange={pageRange}
-        /> */}
+
+
+      <div className='d-flex gap-2 justify-content-center my-4'>
+        <div>
+          <select class="form-select" value={page} onChange={(e) => handlePageChange(e.target.value)}>
+            {Array.from(Array(totalPages), (_, i) => (
+              <option key={i + 1} value={i + 1}>
+                Page {i + 1}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button className='btn btn-outline-primary' disabled={page === 1} onClick={() => handlePageChange(1)}>Primera página</button>
+        <button className='btn btn-outline-primary' disabled={page === 1} onClick={() => handlePageChange(page - 1)}><i className="fas fa-arrow-left"></i></button>
+        <button className='btn btn-outline-primary' disabled={page === totalPages} onClick={() => handlePageChange(page + 1)}> <i className="fas fa-arrow-right"></i></button>
+        <button className='btn btn-outline-primary' disabled={page === totalPages} onClick={() => handlePageChange(totalPages)}>Última página</button>
+
+
+      </div>
 
     </div>
   )
