@@ -22,4 +22,4 @@ VITE_URL_HOST= X-RapidAPI-Host
 ```bash
 npm run dev
 ```
-<img src="" alt="1" border="0">
+<img src="https://raw.githubusercontent.com/bl0pez/React-fetch/master/preview.png" alt="web de videojuegos">
