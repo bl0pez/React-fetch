@@ -28,12 +28,9 @@ function App() {
           ))
         }
       </div>
-
-
-
       <div className='d-flex gap-2 justify-content-center my-4 flex-wrap'>
         <div>
-          <select class="form-select" value={page} onChange={(e) => handlePageChange(e.target.value)}>
+          <select className="form-select" value={page} onChange={(e) => handlePageChange(e.target.value)}>
             {Array.from(Array(totalPages), (_, i) => (
               <option key={i + 1} value={i + 1}>
                 Page {i + 1}
@@ -47,8 +44,6 @@ function App() {
         <button className='btn btn-outline-primary' disabled={page === totalPages} onClick={() => handlePageChange(page + 1)}> <i className="fas fa-arrow-right"></i></button>
         </div>
         <button className='btn btn-outline-primary' disabled={page === totalPages} onClick={() => handlePageChange(totalPages)}>Última página</button>
-
-
       </div>
 
     </div>
